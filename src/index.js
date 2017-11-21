@@ -77,7 +77,7 @@ async function getBrigades(){
         let data = await response.json();
         console.log("get Brigades DATA",data);
         listBrigades =  data;
-        return listPhase;
+        return listBrigades;
     } catch (e) {
         console.log(e);
         alert(e.message);
@@ -117,11 +117,17 @@ const operationlist = (state = {} ,action) => {
 
 const store = createStore(operationlist);
 
+/*let phasesLists;
+getPhases().then(data =>{
+    phasesLists = data;
+    console.log("PHASES LISTS",phasesLists);
+});*/
+
 store.subscribe(() => {
   /*  console.log("Subscribe",*/store.getState();
 });
 
-store.dispatch({type: 'ADD_PHASE', payload: getPhases()});
+store.dispatch({type: 'ADD_PHASE', payload:  getPhases()});
 store.dispatch({type: 'ADD_TMC', payload: getTmc()});
 store.dispatch({type: 'ADD_BRIGADES', payload: getBrigades()});
 
